@@ -1,19 +1,21 @@
-#include<stdio.h>
-#include<ctype.h>
+#include <stdio.h>
 
 /**
- * main - this function skips e and q
+ * main - Prints the alphabet in lowercase, except for q and e.
  *
- * Return:0
+ * Return: Always 0.
  */
-
 int main(void)
 {
-	int lw = 'a';
-	
-	for (lw = 'a'; lw <= 'z'; lw++)
-		if (lw = 'e' || lw = 'q')
-			continue;
-		putchar(lw);
-	putchar("\n");
+	char letter;
+
+	for (letter = 'a'; letter <= 'z'; letter++)
+	{
+		if (letter != 'e' && letter != 'q')
+			putchar(letter);
+	}
+
+	putchar('\n');
+
+	return (0);
 }

@@ -1,19 +1,25 @@
-#include<stdio.h>
+#include <stdio.h>
 
 /**
- * main - Numbers followed by comma and space
+ * main - Prints all possible combinations of single-digit numbers.
  *
- * Return: 0
+ * Return: Always 0.
  */
-
-int main (void)
+int main(void)
 {
-	int num = 0;
+	int num;
 
-	while (num < 10)
-		putchar("%d, ", num++);
-	
-	putchar("\n");
-	
+	for (num = 0; num <= 9; num++)
+	{
+		putchar((num % 10) + '0');
+		if (num == 9)
+			continue;
+		
+		putchar(',');
+		putchar(' ');
+	}
+
+	putchar('\n');
+
 	return (0);
 }

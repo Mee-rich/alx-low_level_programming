@@ -1,24 +1,18 @@
-#include<stdio.h>
-#include<ctype.c>
+#include <stdio.h>
 
 /**
- * main - this programs prints alphabets in lower case
+ * main - Prints the alphabet in lowercase.
  *
- * You can only use the putchar
- *
- * Return: 0
+ * Return: Always 0.
  */
-
 int main(void)
 {
-	int l ='a';
-	while (l <= 'z')
-	{
-		putchar(l);
-		l++;
-	}
-	
-	putchar("\n");
+	char letter;
+
+	for (letter = 'a'; letter <= 'z'; letter++)
+		putchar(letter);
+
+	putchar('\n');
 
 	return (0);
 }
