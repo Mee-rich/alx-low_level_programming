@@ -6,7 +6,7 @@
  *
  * random positive or negative number
  *
- * This function returns 0 success
+ * Return: 0
  */
 
 int main(void)
