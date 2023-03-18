@@ -2,7 +2,7 @@
 #include<time.h>
 #include<stdlib.h>
 /**
- * Main - A program that prints out a
+ * main - This is the main function
  *
  * random positive or negative number
  *
@@ -12,7 +12,7 @@
 int main(void)
 {
 	int n;
-	     
+
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
 
