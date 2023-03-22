@@ -1,5 +1,4 @@
-#include<stdio.h>
-#include "_putchar"
+#include "main.h"
 
 /**
  * main - prints a word
