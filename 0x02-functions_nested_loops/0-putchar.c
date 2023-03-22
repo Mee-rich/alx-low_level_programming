@@ -1,17 +1,21 @@
 #include "main.h"
-
-/**
- * main - prints a word
- *
- * Description: just prints a statement
- * Return: 0 On success
- */
+	/**
+	 * main - print _putchar
+	 * is written by mbah
+	 * Return: 0
+	 */
 
 
-int main(void)
-{
-	char word[] = "_putchar";
-	putchar("%s\n",word);
-	
+	int main(void)
+	{
+	_putchar('_');
+	_putchar('p');
+	_putchar('u');
+	_putchar('t');
+	_putchar('c');
+	_putchar('h');
+	_putchar('a');
+	_putchar('r');
+	_putchar('\n');
 	return (0);
-}
+	}
