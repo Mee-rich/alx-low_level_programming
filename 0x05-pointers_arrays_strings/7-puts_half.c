@@ -1,75 +1,21 @@
-#include "holberton.h"
-
-
+#include "main.h"
 
 /**
- *
- *  * puts_half - main function.
- *
- *   * @str: Pointer, the string of numbers to print.
- *
- *    *
- *
- *     * Description: This function prints half of a string.
- *
- *      *
- *
- *       * Return: none.
- *
- *        */
-
-
+ * puts_half - prints the second half of a string.
+ *@str: string to use.
+ */
 
 void puts_half(char *str)
-
 {
+	int length, n, i;
 
-		int n;
-
-			int i;
-
-
-
-				while (str[n])
-
-						{
-
-									n++;
-
-										}
-
-
-
-					if (n % 2 == 1)
-
-							{
-
-										i = (n - 1) / 2;
-
-												i = n - i;
-
-													}
-
-
-
-						else
-
-								{
-
-											i = n / 2;
-
-												}
-
-
-
-							for (; str[i]; i++)
-
-									{
-
-												_putchar(str[i]);
-
-													}
-
-								_putchar('\n');
-
-}
+	for (length = 0; str[length] != '\0'; length++)
+	{
+	}
+	n = (length - 1) / 2;
+	for (i = n + 1; str[i] != '\0'; i++)
+	{
+		_putchar(str[i]);
+	}
+	_putchar('\n');
+}}

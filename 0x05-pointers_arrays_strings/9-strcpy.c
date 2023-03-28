@@ -1,51 +1,24 @@
-lude "holberton.h"
-
-#include <stdio.h>
-
-
+#include "main.h"
 
 /**
- *
- *  * *_strcpy - main function.
- *
- *   * @src: The source.
- *
- *    * @dest: The destination.
- *
- *     *
- *
- *      * Description: This function copies the string pointed to by src,
- *
- *       * including the terminating null byte (\0), to the buffer pointed to by dest.
- *
- *        *
- *
- *         * Return: The pointer to dest.
- *
- *          */
-
-
+ * *_strcpy - copies the string pointed to by src, including \0.
+ *@src: pointer.
+ *@dest: pointer.
+ *Return: the pointer to dest.
+ */
 
 char *_strcpy(char *dest, char *src)
-
 {
+	int i, length;
 
-		int i;
+	for (length = 0; src[length] != '\0'; length++)
+	{
+	}
 
-
-
-			for (i = 0; src[i]; i++)
-
-					{
-
-								dest[i] = src[i];
-
-									}
-
-				dest[i] = '\0';
-
-
-
-					return (dest);
-
+	for (i = 0; i <= length ; i++)
+	{
+		dest[i] = src[i];
+	}
+	return (dest);
 }
+
