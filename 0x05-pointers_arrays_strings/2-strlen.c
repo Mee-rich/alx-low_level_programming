@@ -1,40 +1,17 @@
-#include "main.h"
-
-
-
 /**
- *
- *  * _strlen - main function.
- *
- *   * @s: Pointer with the address value.
- *
- *    * Description: This function takes a pointer to an int as parameter
- *
- *     * and updates the value it points to to 98.
- *
- *      *
- *
- *       * Return: none.
- *
- *        */
-
+* _strlen - A function that counts the number of words in a string
+*@s: stored the address of the string to count
+*
+* Return: Always 0 (Success)
+*/
 int _strlen(char *s)
-
 {
+int word_count;
 
-		int i = 0;
+for (word_count = 0; s[word_count] != '\0'; word_count++)
+{
+}
 
 
-
-			while (*s != '\0')
-
-			{
-
-				i++;
-
-				s++;
-
-					}
-			return (i);
-
+return (word_count);
 }

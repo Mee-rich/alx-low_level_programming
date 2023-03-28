@@ -1,34 +1,16 @@
-#include "holberton.h"
-
-
-
 /**
- *
- *  * swap_int - main function.
- *
- *   * @a: Pointer with the address value.
- *
- *    * @b: Pointer with the address value.
- *
- *     * Description: This function takes a pointer to an int as parameter
- *
- *      * and updates the value it points to to 98.
- *
- *       *
- *
- *        * Return: none.
- *
- *         */
-
+*swap_int - swapping of variable using pointer
+*@a: stored the address of the first pointer variable
+*@b: stored the address of the second pointer variable
+*/
 void swap_int(int *a, int *b)
-
 {
 
-		int i;
+int temp;
 
-	i = *a;
+temp = *a;
 
-	*a = *b;
-	*b = i;
+*a = *b;
+*b = temp;
 
 }

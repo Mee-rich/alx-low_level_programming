@@ -1,34 +1,17 @@
 #include "main.h"
-
-
-
 /**
- *
- * _puts - main function.
- *
- *  @str: Pointer with the address value.
- *
- *  Description: function that print a string on the stdout
- *
- * 
- *
- *  Return: none.
- *
- */
-
+*_puts - prints string to the screen and append new line
+*@str: stored the address of string variable
+*
+*/
 void _puts(char *str)
-
 {
 
-		while (*str != '\0')
+int word_count;
 
-				{
-
-				_putchar(*str++);
-
-					}
-			_putchar('\n');
-
+for (word_count = 0; str[word_count] != '\0'; word_count++)
+{
+_putchar(str[word_count]);
 }
-
-
+_putchar('\n');
+}
