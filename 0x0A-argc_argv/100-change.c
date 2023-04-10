@@ -1,73 +1,37 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 /**
- * main - number of coins
- * 
- * @argc: argument counter
- * 
- * @argv: array of arguments
- * 
- * Return: Always  0 (success)
+* main - prints the number of arguments passed into it.
+* @argc: - # of parameters
+* @argv: - array of parameters
+* Return: no errros 0. error 1
 */
-
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
-    if (argc = 1 )
-    {
-	int counter;
-        int cent = atoi(argv[1]);
-        int coins [] = {25, 10, 5, 2, 1};
+	int change = 0, n;
 
-        for(int i = 0; i < 5 ; i++){
-
-            if (cent != 0)
+	if (argc != 2)
 	{
-		switch(int i)
-		{
-			case (0):
-				if (cent >= 25){
-				cent -= 25;
-				counter++;
-				continue;
-				}
-
-			case (1):
-				if (cent >= 10){
-				cent -= 10;
-				counter++;
-				continue;
-				}
-
-			case (3):
-				if (cent >=5){
-				 cent -=5;
-				 counter ++;
-				 continue;
-				}
-
-			case (4):
-				if (cent >= 2){
-				 cent -= 2;
-				 counter++;
-				 continue;
-				}
-
-			default:
-				 cent--;
-				 counter++;
-				 break;
-
-		}
-        }
-        printf("%d\n", counter);
-	return 0;
-	
-    else
-    {
-        printf("Error\n");
-        return 1;
-    }
-    
-   
+	printf("Error\n");
+	return (1);
+	}
+	n = atoi(argv[1]);
+	if (n < 0)
+	{ printf("0\n");
+	return (0); }
+	if (n >= 25)
+	{ change = n / 25;
+	n = n % 25; }
+	if (n >= 10)
+	{ change += n / 10;
+	n = n % 10; }
+	if (n >= 5)
+	{ change += n / 5;
+	n = n % 5; }
+	if (n >= 2)
+	{ change += n / 2;
+	n = n % 2; }
+	change += n;
+	printf("%d\n", change);
+return (0);
 }
