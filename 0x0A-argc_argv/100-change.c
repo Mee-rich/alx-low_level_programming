@@ -1,10 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 /**
-* main - prints the number of arguments passed into it.
-* @argc: - # of parameters
-* @argv: - array of parameters
-* Return: no errros 0. error 1
+ * main - minimum number of coin for change
+ *
+ * coins: 25, 10, 5, 2, 1
+ *
+ * @argc: argument counter
+ *
+ * @argv: array of arguments
+ *
+ * Return: Always  0 (success)
 */
 int main(int argc, char *argv[])
 {
@@ -34,4 +39,5 @@ int main(int argc, char *argv[])
 	change += n;
 	printf("%d\n", change);
 return (0);
+
 }
