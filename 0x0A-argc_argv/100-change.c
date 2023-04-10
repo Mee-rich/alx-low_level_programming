@@ -18,43 +18,20 @@ int main(int argc, char* argv[])
      
     if (argc = 1 )
     {
+	int counter;
         int cent = atoi(argv[1]);
-        int count;
+        int coins [] = {25, 10, 5, 2, 1};
+
+        for(i = 0; i < coins ; i++){
 
             while (cent != 0)
             {
-
-            
-                if ( (cent - 25) >= 0)
-                {
-                    cent -= 25;
-                    count++;
-                }
-                else if ( (cent >= 10 >= 0))
-                {
-                    cent -= 10;
-                    count++;
-                }
-                else if ( (cent >= 5 >= 0))
-                {
-                    cent -= 5;
-                    count++;
-                }
-                else if (( cent >= 2 >= 0))
-                {
-                    cent -= 2;
-                    count++;
-                }
-                else
-                {
-                    cent --;
-                    count++;
-                }
-                
+                cent = cent % coins[i];
             }
-
-        printf("%d\n", count);
-       
+          
+        }
+        printf("%d\n", i);
+        return 0;
     }
     else
     {
