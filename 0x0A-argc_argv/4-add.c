@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
     for(i = 1; i < argc; i++)
     {
 
-        if(argv[i]  > '0' || argv[i] > '9' )
+        if(argv[i][digit]  > '0' || argv[i][digit] > '9' )
         {
             sum +=  atoi(argv[i]);
         }
@@ -30,7 +30,6 @@ int main(int argc, char* argv[])
         }
 
     }
-
     printf("%d\n", sum);
-    return 0;
+            return (0);
 }
