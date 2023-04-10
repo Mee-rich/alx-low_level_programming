@@ -3,7 +3,7 @@
 
 
 /**
- * main - a program that renames itself 
+ * main - a program that renames itself
  * 
  * it changes to the inputted name
  * 
