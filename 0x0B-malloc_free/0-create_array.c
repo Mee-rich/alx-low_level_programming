@@ -8,20 +8,22 @@
 *
 * Return: pointer to array
 */
-char *create_array( int size, char c)
-{
-	char *s;
-	int i;
 
-	if (size == NULL)
-		{return (NULL);}
-	s = malloc((size + 1) * sizeof(char));
-	if (s == NULL )
-		{return (NULL);}
-	for (i = 0; i < size; i++)
-	{
-		s[i] = c;
-	}
-	s[i] = '\0';
-	return (s);
+char *create_array(unsigned int size, char c)
+{
+	char *array;
+	unsigned int index;
+
+	if (size == 0)
+		return (NULL);
+
+	array = malloc(sizeof(char) * size);
+
+	if (array == NULL)
+		return (NULL);
+
+	for (index = 0; index < size; index++)
+		array[index] = c;
+
+	return (array);
 }
