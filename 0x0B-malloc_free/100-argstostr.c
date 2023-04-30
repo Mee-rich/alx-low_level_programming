@@ -1,13 +1,14 @@
-//#include "main.h"
+#include "holberton.h"
 #include <stdio.h>
 #include <stdlib.h>
-
 /**
- * argstostr - concatenates all the arguments.
- * 
- * Return: Always 0.
+* argstostr - concatenates all the arguments of your program
+* @ac: size
+* @av: array arguments
+* Return: double pointer
 */
-    char *argstostr(int ac, char **av)
+
+char *argstostr(int ac, char **av)
 {
 	int i = 0, k = 0, count = 0;
 	char *s;
@@ -45,23 +46,3 @@
 	}
 return (s);
 }
-
-
-/**
- * main - checks the code for ALX School students.
- * 
- * Return: Always 0
-*/
-// int main(int ac, char *av[])
-// {
-//     char *s;
-
-//     s = argstostr(ac, av);
-//     if (s == NULL)
-//     {
-//         return (1);
-//     }
-//     printf("%s", s);
-//     free(s);
-//     return (0);
-// }

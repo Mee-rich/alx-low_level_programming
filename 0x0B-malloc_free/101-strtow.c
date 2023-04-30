@@ -1,33 +1,10 @@
-//#include "main.h"
+ii#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
-
 /**
- * print_tab - Prints an array of string
- * @tab: The array of print
- * 
- * Return: nothing
-*/
-// void print_tab(char **tab)
-// {
-//     int i;
-
-//     for (i = 0; tab[i] != NULL; ++i)
-//     {
-//         printf("%s\n", tab[i]);
-//     }
-// }
-
-/**
- * strtow - splits a string into words
- * Each element of this array should contain a single word, null-terminated
- * The last elenebt of the returned array should be NULL.
- * Words are separated by spaces
- * 
- * Return: NULL if str == NULL or str ==v""
- * 
- * Return NULL if function fails
- * 
+* strtow - concatenates all the arguments of your program
+* @str: array
+* Return: duble pointer
 */
 char **strtow(char *str)
 {
@@ -72,22 +49,3 @@ char **strtow(char *str)
 	p[height] = '\0';
 return (p);
 }
-
-/**
- * main - check the code for ALX School students.
- * 
- * Return: 1 if an error occurred, 0 otherwise
-*/
-// int main(void)
-// {
-//     char **tab;
-    
-//     tab = strtow("    ALX School    #cisfun    ");
-//     if (tab == NULL)
-//     {
-//         printf("Failed\n");
-//         return (1);
-//     }
-//     print_tab(tab);
-//     return (0);
-// }
