@@ -9,7 +9,7 @@
 
 void free_listint2(listint_t **head)
 {
-    listint_t *temp = **head;
+    listint_t *temp = *head;
     listint_t *traverse;
 
     while (temp != NULL) /*check if the head is null*/
@@ -18,5 +18,7 @@ void free_listint2(listint_t **head)
         traverse = temp; 
         temp = temp->next;
         free(traverse); /*free each non empty node*/
+    
     }
+    *head = NULL;
 }

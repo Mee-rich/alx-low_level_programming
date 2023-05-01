@@ -9,12 +9,13 @@
 */
 int sum_listint(listint_t *head)
 {
-    const listint_t sum_node;
-    listint_t temp = *head;
+    int sum_node = 0;
+    listint_t *temp = head;
 
-    for ( temp; temp != NULL; temp = temp->next) /*testing head for iteration*/
+    while (temp)
     {
-        sum_node += head->n;
+        sum_node += temp->n;
+	temp = temp->next;
     }
     return (sum_node);
 }

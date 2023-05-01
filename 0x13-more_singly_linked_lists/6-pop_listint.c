@@ -9,15 +9,17 @@
 */
 int pop_listint(listint_t **head)
 {
-    const listint_t *head_del;
-    listint_t *temp = **head;
+    listint_t *head_del;
+    int head_del_data;
 
-    if (temp == NULL)
+    if (*head == NULL)
         return (0);
 
-    head_del = temp;
-    temp = temp->next;
+    head_del = *head;
+    head_del_data = (*head)->n;
+    *head = (*head)->next;
+
     free(head_del);
     
-    return (head);
+    return (head_del_data);
 }
