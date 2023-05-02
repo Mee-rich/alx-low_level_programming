@@ -14,7 +14,7 @@ void free_listint2(listint_t **head)
 	if (*head == NULL)
 		return;
 
-	while (*head) /*check if the head is not null*/
+	while (*head != NULL) /*check if the head is not null*/
 	{
 		/*traverse the list and save head to temp*/
 		temp = (*head)->next;
