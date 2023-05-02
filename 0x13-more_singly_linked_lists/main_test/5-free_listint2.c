@@ -18,9 +18,9 @@ void free_listint2(listint_t **head)
     {
         /*traverse the list and save head to temp*/ 
         temp = (*head)->next;
-        free(head); /*free each non empty node*/
+        free(*head); /*free each non empty node*/
 	*head = temp;
 
     }
-    *head = NULL;
+    head = NULL;
 }
