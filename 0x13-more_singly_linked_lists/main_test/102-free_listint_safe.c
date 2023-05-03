@@ -1,94 +1,64 @@
 #include "lists.h"
 
 /**
- * loop_count_listint - Counts the number of unique nodes
+ * _nu - Counts the number of unique nodes
  *                      in a looped listint_t linked list.
- * @head: A pointer to the head of the listint_t to check.
- *
- * Return: If the list is not looped - 0.
- *         Otherwise - the number of unique nodes in the list.
+ * @list: old list to append.
+ * @siz: size of the new list ( always one node more than old list)
+ * 
+ * Return: points to new list
  */
-size_t loop_count_listint(listint_t *head)
+listint_t **_nu(listint_t **list, size_t siz, listint_t *nod)
 {
-	listint_t *temp1, *temp2;
-	size_t nodes_count = 0;
+	listint_t **temp;
+	size_t i;
 
-	if (head == NULL || head->next == NULL)
-		return (0);
-
-	temp1 = head->next;
-	temp2 = (head->next)->next;
-
-	while (temp1)
+		temp = malloc(siz * sizeof(listint_t *));
+	if (temp == NULL)
 	{
-		if (temp1 == temp2)
-		{
-			temp1 = temp2;
-			while (temp1 != temp2)
-			{
-				nodes_count++;
-				temp1 = temp1->next;
-				temp2 = temp2->next;
-			}
-
-			temp1 = temp1->next;
-			while (temp1 != temp2)
-			{
-				nodes_count++;
-				temp1 = temp1->next;
-			}
-
-			return (nodes_count);
-		}
-
-		temp1 = temp2->next;
-		temp2 = (temp2->next)->next;
+		free(list);
+		exit(98);
 	}
-	nodes_count++;
+	for (i = 0; i < siz - 1; i++)
+		temp[i] = list[i];
 
-	return (0);
+	temp[i] = nod;
+	free(list);
+	return (temp);
 }
-
 /**
  * free_listint_safe - Frees a listint_t list safely (ie.
  *                     can free lists containing loops)
- * @h: A pointer to the address of
+ * @head: A pointer to the address of
  *     the head of the listint_t list.
  *
  * Return: The size of the list that was freed.
- *
- * Description: The function sets the head to NULL.
  */
-size_t free_listint_safe(listint_t **h)
+size_t free_listint_safe(listint_t **head)
 {
-	listint_t *temp;
-	size_t node_n, index;
+	listint_t **list = NULL;
+	listint_t *temp_n;
+	size_t i, count = 0;
 
-	node_n = loop_count_listint(*h);
-
-	if (node_n == 0)
+	if (head == NULL || *head == NULL)
+		return (count);
+	while (*head != NULL)
 	{
-		for (; h != NULL && *h != NULL; node_n++)
+		for (i = 0; i < count; i++)
 		{
-			temp = (*h)->next;
-			free(*h);
-			*h = temp;
+			if (*head == list[i])
+			{
+				*head = NULL;
+				free(list);
+				return (count);
+			}
 		}
+		count++;
+		list = _nu(list, count, *head);
+		temp_n = (*head)->next;
+		free(*head);
+		*head = temp_n;
 	}
-
-	else
-	{
-		for (index = 0; index < node_n; index++)
-		{
-			temp = (*h)->next;
-			free(*h);
-			*h = temp;
-		}
-
-		*h = NULL;
-	}
-
-	h = NULL;
-
-	return (0);
+	free(list);
+	return (count);
 }
