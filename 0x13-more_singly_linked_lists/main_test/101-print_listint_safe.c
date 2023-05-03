@@ -1,49 +1,29 @@
 #include "lists.h"
 
-size_t listint_t_count_node (const listint_t *head)
-size_t print_listint_safe(const listint_t *head)
 /**
- * listint_t_count_node - counts the number of none repeated nodes
- *@head: pointer to the linked list listint_t
- *@node_n: returns unique nodes in the looped listint_t list
+ * _n - reallocates memory for an array of pointers
+ * @list: pointer to the linked list listint_t
+ * @nod: returns unique nodes in the looped listint_t list
+ * @siz: size of new list
  *
- * Returns: unique nodes, 0 on success 
+ * Return: new list pointer
 */
-size_t listint_t_count_node (const listint_t *head)
+const listint_t **_n(const listint_t **list, size_t siz, const listint_t *nod)
 {
-	const listint_t *temp1, *temp2;
-	size_t count = 0;
-	if (head == NULL || head->next == NULL)
-                return (98);
+	const listint_t **temp;
+	size_t i;
 
-	temp1 = head->next;
-        temp2 = head->next->next;
-        while (temp2)
-        {
-               
-    		if (temp1 == temp2)
-                        {
-                                temp1 = head;
-                                while(temp1 != temp2)
-                                {
-                                        count++;
-					temp1 = temp1->next;
-					temp2 = temp2->next;
-                                }
-                                temp1 = temp1->next;
-                                while (temp1 != temp2)
-                                {
-                                        temp1 = temp1->next;
-                                        count++;
-   				}
-                                return(count);
-                        }
-		temp1 = temp1->next;
-                temp2 = temp2->next->next;
-
-        }
-	count++;
-	return (0);
+	temp = malloc(siz * sizeof(listint_t *));
+	if (temp == NULL)
+	{
+		free(list);
+		exit(98);
+	}
+	for (i = 0; i < siz - 1; i++)
+		temp[i] = list[i];
+	temp[i] = nod;
+	free(list);
+	return (temp);
 }
 /**
  * print_listint_safe - Prints a listint_t listin safe mode.
@@ -54,28 +34,26 @@ size_t listint_t_count_node (const listint_t *head)
 
 size_t print_listint_safe(const listint_t *head)
 {
-	const listint_t *temp;
-	size_t index = 0, node_count;
+	const listint_t **list = NULL;
+	size_t index = 0, i;
 
-	node_count = listint_t_count_node(head);
-	temp = head;
-	if (node_count == 0)
+	while (head != NULL)
 	{
-		for (;head != NULL; node_count++)
+		for (i = 0; i < index; i++)
 		{
-			printf("[%p] %d\n", (void *)temp, temp->n);
-			temp = temp->next;
+			if (head == list[i])
+			{
+				printf("-> [%p] %d\n", (void *)head, head->n);
+				free(list);
+				return (index);
+			}
 		}
+		index++;
+		list = _n(list, index, head);
+		printf("[%p] %d\n", (void *)head, head->n);
+		head = head->next;
 	}
-	else
-	{
-		for (index = 0; index < node_count ; index++)
-		{
-			printf("[%p] %d\n", (void *)temp, temp->n);
-			temp = temp->next;
-		}
-		printf("[%p] %d\n", (void *)temp, temp->n);
-	}
+	free(list);
 	return (0);
 }
 
