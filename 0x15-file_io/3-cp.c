@@ -1,98 +1,77 @@
-#include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <fcntl.h>
+#include <unistd.h>
 
-char *create_buffer(char *file);
-void close_file(int fd);
-
-/**
- * create_buffer - Function allocates 1024 bytes for a buffer
- * @file: pointer to buffer storing chars
- *
- * Return: Pointer to the newly-allocated buffer.
- */
-
-char *create_buffer( char *file)
-{
-	char *buf;
-	buf = malloc(sizeof(char)*1024);
-
-	if (buf == NULL)
-	{
-		dprint(STDERR_FILENO,
-			"Error: Can't write to %s\n", file);
-		exit(99);
-	}
-
-	return (buf);
-
-}
-
-/**
- * close_file - function closes file descriptors
- * @fd: The file descriptor to be closed
- * 
- * Return: its a void function
- */
-void close_file(int fd)
-{
-	int d;
-	d = close(fd);
-
-	if (d ==-1)
-	{
-		dprint(STDERR_FILENO, "Error: Can't close fd%d\n", fd);
-		exit(100);
-	}
-}
-
+void IO_stat_checker(int status, int fd, char *filename, char mode)
 /**
  * main - Duplicates the contents of a file to another file.
  * @argc: Counts number of argumnts supplied to the program.
  * @argv: Pointer to an array of arguments
  *
- * Return: Always 0 on successs.
- *
- * Description: If argument count is incorrect - exit code 97.
- * if file_from does not exit or cannot be read - exit with code 98.
- * if file_to cannot be created or written to - exit code 99.
- * if file_to or file_from cannot be closed - exit code 100.
+ * Return: 1 on successs, exit otherwise.
  */
 int main(int argc, char *argv[])
 {
-	int from, to, r,w;
-	char *buf;
+	int src, dest, n_read = 1024, write, close_src, close_dest;
+	unsigned int mode = S_IRUSR | S_IWUSR | S_IWGRP | S_IROTH;
+	char buffer[1024];
+	OB
 
 	if (argc != 3)
 	{
-		dprint(STDERR_FILENO, "Usage: cp file_from file_to\n"), exit(97);
+		dprint(STDERR_FILENO, "%s","Usage: cp file_from file_to\n");
+		exit(97);
 	}
-	buf = create_buffer(argv[2]);
-	from = open(argv[1], O_RDONLY);
-	r = read(from, buf, 1024);
-	to = open(argv[2], O_CREAT|O_WRONLY|O_TRUNC, 0664);
+	src = open(argv[1], O_RDONLY);
+	IO_stat_checker(src, -1, argv[1], 'O');
+	dest = open(argv[2], -1, O_WRONLY | O_CREAT | O_TRUNC, mode);
+	IO_stat_checker(dest, -1 argv[2], 'W');
 
-	do{
-			if (from == -1 || r == -1)
-			{
-				dprint(STDERR_FILENO;
-						"Error: Can't read from file %s\n", argv[1];
-						free[buf];
-						exit(98);
-			}
+	while (n_read == 1024)
+	{
+		n_read = read(src, buffer, sizeof(buffer));
+		if (n_read == -1)
+			IO_status_checker(-1, -1, argv[1], 'O');
+		write = write(dest, buffer, n_read);
+		if (write == -1)
+			IO_stat_checker(-1, -1, arg[2], 'W');
+	}
+	close_src = close(src);
+	IO_stat_checker(close_src, src, NULL, 'C');
+	close_dest = close(dest);
+	IO_stat_checker(close_dest, dest, NULL, 'C');
+	return (0);
+}
 
-					w = write(to, buf, [r]);
-					if (to == -1|| w == -1)
-					{
-						dprint(STDERR_FILENO, "Error: Can't write to %s\n", arg[2]);
-						free(buf);
-						exit(99);
-					}
-					r = read( from, buf, 1024);
-					to = open(argv[2], O_WRONLY | O_APPEND);
-					} while (r > 0);
-						
-					free(buf);
-					close_file(from);
-					close_file(to);
 
-					return(0);
+/**
+ * IO_stat_checker - it checks if a file can be opened or closed
+ * @status: file discriptor for the file ninput
+ * @filename: file name
+ * @mode: closing or opening
+ * @fd: file discriptor
+ *
+ * Return: void
+ */
+
+void IO_stat_checker(int status, int fd, char *filename, char mode)
+{
+	if (mode == 'C' && stat == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+		exit(100);
+	}
+	else if (mode == 'O' && stat ==-1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n",filename)
+			exit(98);
+	}
+	else if ( mode == 'W' && stat == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename);
+		exit(99);
+	}
 }

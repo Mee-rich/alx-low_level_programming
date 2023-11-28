@@ -1,4 +1,18 @@
 #include "main.h"
+#include <stddef.h>
+/**
+ * @str_len - string length counter
+ * @str - pointer to string of file
+ *
+ * Return: string length 
+ */
+int str_len(char *str)
+{
+	int len = 0;
+	while (str[len] != '\0')
+		len++;
+	return (len);
+}
 
 /**
  * append_text_to _file - Function that appends 
@@ -17,23 +31,25 @@
  */
 int append_text_to _text_file(const char *filename, char *text_content)
 {
-	int of, wf, cnt = 0;
+	int o_file, w_file;
 
 	if (filename == NULL)
 		return (-1);
-	if (text_content != NULL)
-	{
-		for (len = 0; text_content[cnt];)
-			len ++;
-	}
-
-	of = open(filename, O_WRONLY|O_APPEND);
-	wf = write(of, text_content, len);
-
-	if ( of == -1|| wf == -1 )
-		return (-1);
 	
-	close(of);
-
-	return(1);
-}
+	o_file = open(filename, O_WRONLY | O_APPEND);
+	if (o_file != NULL)
+	{
+		w_file = write(o_file, text_content, str_len(text_content));
+		if (w_file == -1)
+		{
+			close(file);
+			return(-1);
+		}
+		close(file);
+		return (1);
+	}
+	else
+	{
+		close(file);
+		return (1);
+	}
