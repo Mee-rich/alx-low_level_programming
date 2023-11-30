@@ -11,16 +11,16 @@
  * 	if write faiuls or does not write 
  * 	the expected amount of bytes, return 0.
  */
-
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-        char *buffer
+
+        char *buffer;
         ssize_t file_dir;
         ssize_t rec;
         ssize_t wr;
 
 
-	buffer = malloc (letters);
+	buffer = malloc (sizeof(char) * letters);
 	if (buffer == NULL)
 		return (0);
 
@@ -35,11 +35,12 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	}
 
-	rec = read(file, text, letters);
+	rec = read(file_dir, buffer, letters);
 
-	wr = write(STDOUT_FILENO, text, let);
+	wr = write(STDOUT_FILENO, buffer, rec);
 
-	close(file);
+	free(buffer);
+	close(file_dir);
 
 	return (wr);
 }
