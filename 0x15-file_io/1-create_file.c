@@ -1,21 +1,6 @@
 #include "main.h"
-#include "stddef.h"
-/**
- * @str_len -  a counter for string length
- * @str - string input
- *
- * Return: string length
- */
-int str_len(char *str)
-{
-        int len = 0;
-
-        while (str[len] != '\0')
-                len++;
-	return (len);
-}
-
-
+#include <stddef.h>
+#include <stdio.h>
 
 /**
  * create_file - Function that creates a file
@@ -28,7 +13,7 @@ int str_len(char *str)
  */
 int create_file(const char *filename, char *text_content)
 {
-	int file_dir, w;
+	int file_dir, w, len = 0;
 
 	if (filename == NULL)
 		return(-1);
@@ -39,16 +24,17 @@ int create_file(const char *filename, char *text_content)
 	if (file_dir == -1)
 		return (-1);
 	if (text_content != NULL)
-
-		w = write (file_dir, text_content, str_len(text_content));
-		if (w == -1)
-			close(file_dir);
-			return (-1);
+	{
+		for (len = 0; text_content[len]; )
+			len++;
+	}
+	
+	w = write (file_dir, text_content, len);
+	
+	if (file_dir ==-1 || w == -1)
+		return (-1);
 		
-		close(file_dir);
-		return (1);
-	else 
-		close(file_dir)
-		return (1);
-
+	close(file_dir);
+	return (1);
+	
 }
