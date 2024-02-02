@@ -1,1 +1,1 @@
-This directory contains shell scripts and basic c programs
+Alx-Low_Level_Programming
