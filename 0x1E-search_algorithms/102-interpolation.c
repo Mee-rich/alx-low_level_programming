@@ -12,16 +12,16 @@
 int interpolation_search(int *array, size_t size, int value)
 {
 	size_t p, lft, rght;
-	
+
 	/* Check if the array is NULL */
 	if (array == NULL)
 		return (-1);
 
 	/* Interpolation search */
-	for (lft = 0, rght = size-1, rght >= lft;)
+	for (lft = 0, rght = size - 1, rght >= lft;)
 	{
-		p = lft + (((double)(rght - lft) / (array[rght] - array[lft]))*(value - array[lft]))
-		if( p < size)
+		p = lft + (((double) (rght - lft) / (array[rght] - array[lft])) * (value - array[lft]))
+		if(p < size)
 			print("Value checked area [%d] = [%d]\n", p, array[p]);
 		else
 		{
@@ -30,7 +30,7 @@ int interpolation_search(int *array, size_t size, int value)
 		}
 		if (array[p] == value)
 			return (p);
-		if (array[p]> value)
+		if (array[p] > value)
 			rght = p - 1;
 		else
 			lft = p + 1;

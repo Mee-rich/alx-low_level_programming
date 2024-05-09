@@ -1,7 +1,7 @@
 #include "search_algos.h"
 
 /**
- * get_next: Gets the nth node to a given node
+ * get_next - Gets the nth node to a given node
  * @node: The starting node
  * @n: The number of the positions next to the node
  * Return: the node n places next to the node, otherwise

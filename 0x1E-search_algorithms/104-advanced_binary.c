@@ -13,12 +13,12 @@ void print_array(int *array, size_t l, size_t r)
 	{
 		printf("Searching in array: ");
 		for (i = l; i < l + (r - l + 1); i++)
-			printf("%d%s", *(array + i),  <l + (r - l) ? ", " : "\n");
+			printf("%d%s", *(array + i), i < l + (r - l) ? ", " : "\n");
 	}
 }
 
 
-/** 
+/**
  * binary_search_index - Searches a value in a sorted array
  * using a binary search
  * @array: The array to search in
@@ -70,5 +70,5 @@ int advanced_binary(int *array, size_t size, int value)
 		return (-1);
 	else if ((size == 1) && (*array == value))
 		return (0);
-	return (binary_search_index(array, 0, size - 1, vakue));
+	return (binary_search_index(array, 0, size - 1, value));
 }
