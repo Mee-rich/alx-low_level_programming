@@ -6,9 +6,10 @@
 #include <math.h>
 
 /**
- * struct listint_s singly inked list
+ * struct listint_s - singly inked list
  * @n: Integer
  * @index: Pointer to the next node
+ * @next: Pointer to the next node
  * Description: Singly linked list node structure
  */
 typedef struct listint_s
